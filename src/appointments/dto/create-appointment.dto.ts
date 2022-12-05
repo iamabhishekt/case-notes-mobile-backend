@@ -4,6 +4,7 @@ import {
   IsNotEmpty, 
   IsString,
   IsDate,
+  IsNumber,
 } from "class-validator";
 
 
@@ -40,18 +41,18 @@ export class CreateAppointmentDto {
   @IsNotEmpty()
   readonly appointmentPatientSession: string;
 
-  // @IsString()
-  // @ApiProperty()
-  // @IsNotEmpty()
-  // readonly patientId: number;
+  @IsNumber()
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly patientId: number;
 
-  // @IsString()
-  // @ApiProperty()
-  // @IsNotEmpty()
-  // readonly doctorId: number;
+  @IsNumber()
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly doctorId: number;
 
-  // @IsString()
-  // @ApiProperty()
-  // @IsNotEmpty()
-  // readonly scheduleId: number;
+  @IsNumber()
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly scheduleId: number;
 }

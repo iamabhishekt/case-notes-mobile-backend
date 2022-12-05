@@ -12,7 +12,7 @@ export class AppointmentsService {
     private readonly prisma: PrismaService,
   ) {}
 
-  create(createAppointmentDto: CreateAppointmentDto, doctorId, patientId: number) {
+  create(createAppointmentDto: CreateAppointmentDto) {
     return this.prisma.appointment.create({data: createAppointmentDto});
   }
 
