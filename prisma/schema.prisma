@@ -17,8 +17,66 @@ model Appointment {
   appointmentScheduleFrom   DateTime @default(now())
   appointmentScheduleTo     DateTime @updatedAt
   appointmentType           String
+  appointmentStatus         String
   appointmentPatientName    String
   appointmentPatientSession String
-  user                      User     @relation(fields: [userId], references: [id])
-  userId                    Int
+}
+
+model Doctor {
+  id             Int      @id @default(autoincrement())
+  createdAt      DateTime @default(now())
+  modifiedAt     DateTime @updatedAt
+  email          String   @unique
+  firstName      String
+  lastName       String
+  contactNumber  String
+  profession     String?
+  qualification  String?
+  case           String
+  profilePicture String
+}
+
+model Patient {
+  id               Int      @id @default(autoincrement())
+  createdAt        DateTime @default(now())
+  modifiedAt       DateTime @updatedAt
+  title            String
+  firstName        String
+  middleInitial    String
+  lastName         String
+  phone            String
+  email            String   @unique
+  sex              String
+  ssn              String
+  dateOfBirth      DateTime
+  street           String
+  city             String
+  state            String
+  zip              String
+  insuranceCompany String
+  plan             String
+  groupNumber      String
+  cardHolder       String
+  medications      String
+  allergies        String
+  surgeries        String
+  familyHistory    String
+  addictions       String
+  questionnaire    String
+  symptoms         String
+  signature        String
+}
+
+model Schedule {
+  id               Int      @id @default(autoincrement())
+  scheduleActivity String
+  roomNumber       Int
+  providerGroup    String
+  userId           Int
+  userName         String
+  patientId        Int
+  scheduleDate     DateTime
+  scheduleFrom     DateTime
+  scheduleTo       DateTime
+  scheduleStatus   String
 }

@@ -26,7 +26,7 @@ export class CreateScheduleDto {
   @ApiProperty()
   @IsNotEmpty()
   @IsString()
-  username: string;
+  userName: string;
 
   @ApiProperty()
   @IsNotEmpty()

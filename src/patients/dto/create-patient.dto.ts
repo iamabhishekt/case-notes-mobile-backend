@@ -91,40 +91,38 @@ export class CreatePatientDto {
   @IsString()
   @ApiProperty()
   @IsJSON()
-  medications: JSON;
+  medications: string;
 
   @IsString()
   @ApiProperty()
-  allergies: JSON;
+  allergies: string;
 
   @IsString()
   @ApiProperty()
-  @IsJSON()
-  medicalHistory: JSON;
+  surgeries: string;
+
+  @ApiProperty()
+  @IsString()
+  medicalHistory: string;
+
+  @ApiProperty()
+  @IsString()
+  familyHistory: string;
+
+  @ApiProperty()
+  @IsString()
+  addictions: string;
+
+  @ApiProperty()
+  @IsString()
+  questionnaire: string;
+
+  @ApiProperty()
+  @IsString()
+  symptoms: string;
 
   @IsString()
   @ApiProperty()
-  @IsJSON()
-  familyHistory: JSON;
-
-  @IsString()
-  @ApiProperty()
-  @IsJSON()
-  addictions: JSON;
-
-  @IsString()
-  @ApiProperty()
-  @IsJSON()
-  questionnaire: JSON;
-
-  @IsString()
-  @ApiProperty()
-  @IsJSON()
-  symptoms: JSON;
-
-  @IsString()
-  @ApiProperty()
-  @IsString()
   signature: string;
 
 }

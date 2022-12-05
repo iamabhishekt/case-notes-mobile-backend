@@ -18,7 +18,7 @@ export class ScheduleEntity implements Schedule {
   userId: number;
 
   @ApiProperty()
-  username: string;
+  userName: string;
 
   @ApiProperty()
   patientId: number;

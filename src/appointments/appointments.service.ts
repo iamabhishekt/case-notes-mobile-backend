@@ -10,8 +10,7 @@ export class AppointmentsService {
   ) {}
 
   create(createAppointmentDto: CreateAppointmentDto) {
-    const appointment = this.prisma.appointment.create({data: createAppointmentDto});
-    return this.prisma.appointment.save(appointment);
+    return this.prisma.appointment.create({data: createAppointmentDto});
   }
 
   async findAll(params: { skip?: number; take?: number }) {
@@ -26,7 +25,7 @@ export class AppointmentsService {
 
   async findOne(id: number) {
     return await this.prisma.appointment.findUnique({
-    where: {appointmentId: id},
+    where: {id},
     });
   }
 
