@@ -1,0 +1,38 @@
+nest new
+
+cd case-notes-mobile-backend/
+
+nest g co
+
+appointments
+
+nest g co modules/abc --dry-run
+
+nest g s
+
+nest g module appointments
+
+nest g class appointments/dto/create-appointment.dto --no-spec
+
+$ npm i class-validator class-transformer
+
+$ npm run start:dev
+
+$ npm i @nestjs/mapped-types
+
+$ docker-compose up -d
+
+$ npm i @nestjs/typeorm typeorm pg
+
+docker commands
+
+1. docker ps
+
+2. docker-compose exec db sh -c 'mysql -u root -p${MYSQL_ROOT_PASSWORD}'
+
+3. docker exec -it c5092 mysql -p${MYSQL_PASSWORD}
+
+mysql query to get access
+
+1. CREATE USER 'mysql'@'%' IDENTIFIED BY 'rootpass123';
+2. GRANT ALL PRIVILEGES ON *.* TO 'mysql'@'%' WITH GRANT OPTION;

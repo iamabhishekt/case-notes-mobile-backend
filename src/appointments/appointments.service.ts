@@ -1,0 +1,45 @@
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateAppointmentDto } from './dto/create-appointment.dto';
+import { UpdateAppointmentDto } from './dto/update-appointment.dto';
+
+@Injectable()
+export class AppointmentsService {
+  constructor(
+    private readonly prisma: PrismaService,
+  ) {}
+
+  create(createAppointmentDto: CreateAppointmentDto) {
+    const appointment = this.prisma.appointment.create({data: createAppointmentDto});
+    return this.prisma.appointment.save(appointment);
+  }
+
+  async findAll(params: { skip?: number; take?: number }) {
+    const { skip, take } = params;
+
+    if(isNaN(skip)) return this.prisma.appointment.findMany({ take });
+
+    return this.prisma.appointment.findMany({ 
+      skip, 
+      take });
+  }
+
+  async findOne(id: number) {
+    return await this.prisma.appointment.findUnique({
+    where: {appointmentId: id},
+    });
+  }
+
+  update(id: number, updateAppointmentDto: UpdateAppointmentDto) {
+    return this.prisma.appointment.update({
+      where: { id },
+      data: updateAppointmentDto,
+    });
+  }
+
+  remove(id: number) {
+    return this.prisma.appointment.delete({
+      where: { id },
+    });
+  }
+}
