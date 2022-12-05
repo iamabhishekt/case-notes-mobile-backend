@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import {
   IsDate,
   IsEmail,
@@ -53,6 +54,7 @@ export class CreatePatientDto {
   ssn: string;
 
   @IsDate()
+  @Type(() => Date)
   @ApiProperty()
   dateOfBirth: Date;
 
