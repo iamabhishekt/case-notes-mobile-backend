@@ -1,5 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateDoctorDto } from 'src/doctors/dto/create-doctor.dto';
+import { CreatePatientDto } from 'src/patients/dto/create-patient.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateScheduleDto } from 'src/schedules/dto/create-schedule.dto';
 import { CreateAppointmentDto } from './dto/create-appointment.dto';
 import { UpdateAppointmentDto } from './dto/update-appointment.dto';
 
@@ -9,7 +12,7 @@ export class AppointmentsService {
     private readonly prisma: PrismaService,
   ) {}
 
-  create(createAppointmentDto: CreateAppointmentDto) {
+  create(createAppointmentDto: CreateAppointmentDto, doctorId, patientId: number) {
     return this.prisma.appointment.create({data: createAppointmentDto});
   }
 
