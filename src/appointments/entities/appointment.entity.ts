@@ -25,4 +25,13 @@ export class AppointmentEntity implements Appointment {
 
   @ApiProperty()
   appointmentPatientSession: string;
+
+  @ApiProperty()
+  patientId: number;
+
+  @ApiProperty()
+  doctorId: number;
+
+  @ApiProperty()
+  scheduleId: number;
 }

@@ -18,8 +18,20 @@ model Appointment {
   appointmentScheduleTo     DateTime @updatedAt
   appointmentType           String
   appointmentStatus         String
-  appointmentPatientName    String
   appointmentPatientSession String
+  appointmentPatientName    String
+
+  patient  Patient @relation(fields: [patientId], references: [id])
+  patientId Int     @unique
+
+  doctor   Doctor @relation(fields: [doctorId], references: [id])
+  doctorId Int
+
+  schedule   Schedule @relation(fields: [scheduleId], references: [id])
+  scheduleId Int      @unique
+
+  @@index([patientId])
+  @@index([doctorId])
 }
 
 model Doctor {
@@ -34,10 +46,12 @@ model Doctor {
   qualification  String?
   case           String
   profilePicture String
+
+  appointments Appointment[]
 }
 
 model Patient {
-  id               Int      @id @default(autoincrement())
+  id               Int      @id @unique @default(autoincrement())
   createdAt        DateTime @default(now())
   modifiedAt       DateTime @updatedAt
   title            String
@@ -65,6 +79,9 @@ model Patient {
   questionnaire    String
   symptoms         String
   signature        String
+
+  appointments Appointment[]
+  schedules    Schedule[]
 }
 
 model Schedule {
@@ -74,9 +91,15 @@ model Schedule {
   providerGroup    String
   userId           Int
   userName         String
-  patientId        Int
   scheduleDate     DateTime
   scheduleFrom     DateTime
   scheduleTo       DateTime
   scheduleStatus   String
+
+  patient   Patient @relation(fields: [patientId], references: [id])
+  patientId Int
+
+  appointment Appointment?
+
+  @@index([patientId])
 }

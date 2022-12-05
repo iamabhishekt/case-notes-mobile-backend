@@ -38,4 +38,19 @@ export class CreateAppointmentDto {
   @ApiProperty()
   @IsNotEmpty()
   readonly appointmentPatientSession: string;
+
+  @IsString()
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly patientId: number;
+
+  @IsString()
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly doctorId: number;
+
+  @IsString()
+  @ApiProperty()
+  @IsNotEmpty()
+  readonly scheduleId: number;
 }
