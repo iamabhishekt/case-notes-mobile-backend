@@ -22,6 +22,7 @@
     "compodoc": "npx compodoc -p tsconfig.json -s",
     "build:doc": "./node_modules/.bin/compodoc -p libs/core/tsconfig.lib.json --theme Readthedocs -d dist/apps/documentation/compodoc ",
     "serve:doc": "./node_modules/.bin/compodoc -p libs/core/tsconfig.lib.json --theme Readthedocs -d dist/apps/documentation/compodoc -s"
+    "vercel-build": "prisma generate && prisma migrate deploy && next build"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
